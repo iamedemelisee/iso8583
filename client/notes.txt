@@ -1,0 +1,10 @@
+bufferSize: La quantité de données non lues en octets.
+bytesRead: Le nombre total d'octets lus à partir du socket.
+bytesWritten: Le nombre total d'octets écrits sur le socket.
+connecting: Une valeur booléenne qui indique si le socket est en cours de connexion ou non.
+destroyed: Une valeur booléenne qui indique si le socket a été détruit ou non.
+localAddress: L'adresse IP locale du socket.
+localPort: Le numéro de port local du socket.
+remoteAddress: L'adresse IP distante à laquelle le socket est connecté.
+remoteFamily: La famille d'adresse de la socket distante, qui peut être 'IPv4' ou 'IPv6'.
+remotePort: Le numéro de port distant auquel le socket est connecté.
