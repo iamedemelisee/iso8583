@@ -7,8 +7,7 @@ const isoDefaultSpecs = require('./specs/iso-fields-default-config.json');
 const PORT = 3000;
 const HOST = '127.0.0.1';
 const {packISO, unpackISO, logISO, initSRV_logs} = require('./utils');
-
-const now = new Date().toLocaleString();
+let now = new Date().toLocaleString();
 let message = '';
 const options = {
   key: fs.readFileSync('cert/srv-key.pem'),
@@ -23,32 +22,33 @@ if (!fs.existsSync('logs')) {
 }
 
 const server = tls.createServer(options,(socket) => {
-  message += initSRV_logs(socket);
+  message += initSRV_logs(socket, now);
   socket.on('data', (data) => {
+    let rnow = new Date().toLocaleString();
     const isoMessageReq_CLI = data.toString();
-    message += util.format('[%s] - INFO : Payload data recieved\n', now);
-    message += util.format('[%s] - DATA : %s\n', now, isoMessageReq_CLI);
-    message += util.format('[%s] - INFO : Unpacking in ISO message [...]\n', now);
+    message += util.format('[%s] - INFO : Payload data recieved\n', rnow);
+    message += util.format('[%s] - DATA : %s\n', rnow, isoMessageReq_CLI);
+    message += util.format('[%s] - INFO : Unpacking in ISO message [...]\n', rnow);
     const isoFieldsReq = unpackISO(isoMessageReq_CLI);
-    message += util.format('[%s] - INFO : Successfull\n', now);
-    message += util.format('[%s] - DATA : Data Fields\n', now);
-    message += util.format('[%s] - ***************************************\n', now);
+    message += util.format('[%s] - INFO : Successfull\n', rnow);
+    message += util.format('[%s] - DATA : Data Fields\n', rnow);
+    message += util.format('[%s] - ***************************************\n', rnow);
     message += logISO(isoFieldsReq,isoDefaultSpecs);
-    message += util.format('[%s] - ***************************************\n', now);
-    message += util.format('[%s] - INFO : Sending reponse [...]\n', now);
-    message += util.format('[%s] - DATA : Server sent response as payload\n', now);
+    message += util.format('[%s] - ***************************************\n', rnow);
+    message += util.format('[%s] - INFO : Sending reponse [...]\n', rnow);
+    message += util.format('[%s] - DATA : Server sent response as payload\n', rnow);
     const isoPayloadRes = packISO(isoMessageRes);
     socket.write(isoPayloadRes);
-    message += util.format('[%s] - %s\n', now, isoPayloadRes);
-    message += util.format('[%s] - INFO : Packing response ISO message [...]\n', now);
-    message += util.format('[%s] - INFO : Successfull\n', now);
-    message += util.format('[%s] - DATA : Data Fields\n', now);
-    message += util.format('[%s] - ***************************************\n', now);
+    message += util.format('[%s] - %s\n', rnow, isoPayloadRes);
+    message += util.format('[%s] - INFO : Packing response ISO message [...]\n', rnow);
+    message += util.format('[%s] - INFO : Successfull\n', rnow);
+    message += util.format('[%s] - DATA : Data Fields\n', rnow);
+    message += util.format('[%s] - ***************************************\n', rnow);
     const isoPayloadResFields = unpackISO(isoPayloadRes);
     message += logISO(isoPayloadResFields,isoDefaultSpecs);
-    message += util.format('[%s] - ***************************************\n', now);
-    message += util.format('[%s] - INFO : Awaiting client to send data [...]\n', now);
-    message += util.format('[%s] - ***************************************', now);
+    message += util.format('[%s] - ***************************************\n', rnow);
+    message += util.format('[%s] - INFO : Awaiting client to send data [...]\n', rnow);
+    message += util.format('[%s] - ***************************************', rnow);
     console.log(message);
     fs.appendFileSync(`logs/srv_log.txt`, message + '\n');
     message = ''
@@ -59,8 +59,9 @@ const server = tls.createServer(options,(socket) => {
   });
   
   socket.on('error', (err) => {
-    message += util.format('[%s] - ERROR : Error occurred with client %s:%s ==> %s\n', now, socket.remoteAddress, socket.remotePort, err);
-    console.log(`${now} - ERROR : Error occurred with client ${socket.remoteAddress}:${socket.remotePort} ==> ${err}`);
+    let errnow = new Date().toLocaleString();
+    message += util.format('[%s] - ERROR : Error occurred with client %s:%s ==> %s\n', errnow, socket.remoteAddress, socket.remotePort, err);
+    console.log(`${errnow} - ERROR : Error occurred with client ${socket.remoteAddress}:${socket.remotePort} ==> ${err}`);
   });
 });
 server.listen(PORT, HOST, () => {

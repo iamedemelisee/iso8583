@@ -47,9 +47,8 @@ function unpackISO(payloadMessage){
 };
 
 
-function logISO(unpackedISO, specs){
+function logISO(unpackedISO, specs, now){
   let ms = "";
-  let now = new Date().toLocaleString();
   for (const [key, value] of Object.entries(unpackedISO.fields)) {
     if (key == '055') {
       ms += util.format('[%s] - [F%s] : %s\n', now, key, '');
@@ -78,9 +77,8 @@ function logISO(unpackedISO, specs){
   return ms;
 };
 
-function initCLI_logs(socket){
+function initCLI_logs(socket, now){
   let ms = "";
-  let now = new Date().toLocaleString();
   ms += util.format('[%s] - **************************************************************\n', now);
   ms += util.format('[%s] - INFO : INIT TLS Client [...]\n', now);
   ms += util.format('[%s] - INFO : Attempt to connect to server [...]\n', now);

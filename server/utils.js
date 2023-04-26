@@ -78,9 +78,8 @@ function logISO(unpackedISO, specs){
   return ms;
 };
 
-function initSRV_logs(socket){
+function initSRV_logs(socket, now){
   let ms = "";
-  let now = new Date().toLocaleString();
   ms += util.format('*****************************************************************************\n');
   ms += util.format('[%s] - INFO : Init TLS Server [...]\n', now);
   ms += util.format('[%s] - INFO : Awaiting client connection [...]\n', now);
@@ -101,10 +100,11 @@ function initSRV_logs(socket){
   ms += util.format('[%s] - INFO : Checking certificate [...]\n', now);
   ms += util.format('[%s] - INFO : %s\n', now, socket.authorized ? 'Authorized client' : 'Unauthorized client');
   ms += util.format('[%s] - INFO : New client successfully connected :\n', now);
+  ms += util.format('[%s] - ***************************************\n', now);
   ms += util.format('[%s] - INFO : Awaiting client to send data [...]\n', now);
+  ms += util.format('[%s] - ***************************************\n', now);
   return ms;
 };
-
 
 module.exports = {
     packISO,
