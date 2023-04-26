@@ -63,7 +63,6 @@ const server = tls.createServer(options,(socket) => {
     console.log(`${now} - ERROR : Error occurred with client ${socket.remoteAddress}:${socket.remotePort} ==> ${err}`);
   });
 });
-
 server.listen(PORT, HOST, () => {
   message += util.format('[%s] - INFO : Server running on %s:%s [...]\n', now, HOST, PORT);
 });
