@@ -1,7 +1,6 @@
 const util = require('util');
 const emv = require('node-emv');
 
-
 function packISO(jsonMessage){
   const ikeys = Object.keys(jsonMessage);
   const ivalues= Object.values(jsonMessage);

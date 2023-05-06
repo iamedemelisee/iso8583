@@ -2,265 +2,198 @@
     "000": {
         "label":"MTI",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "a"
     },
     "001": {
         "label":"Bitmap",
         "fixedLength": false,
-        "contentLength": 16,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 64,
+        "maxLength": 128,
+        "contentType": "b"
     },
     "002": {
         "label":"Primary account number (PAN)",
         "fixedLength": false,
-        "contentLength": 16,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 16,
+        "maxLength": 19,
+        "contentType": "n"
     },
     "003": {
         "label":"Processing Code",
         "fixedLength": true,
-        "contentLength": 6,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 6,
+        "maxLength": 6,
+        "contentType": "n"
     },
     "004": {
         "label":"Amount Transaction",
         "fixedLength": true,
-        "contentLength": 12,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 12,
+        "maxLength": 12,
+        "contentType": "n"
     },
     "005": {
+        "label":"Amount, settlement",
         "fixedLength": true,
-        "contentLength": 12,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 12,
+        "maxLength": 12,
+        "contentType": "n"
     },
     "006": {
+        "label":"Amount, cardholder billing",
         "fixedLength": true,
-        "contentLength": 12,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 12,
+        "maxLength": 12,
+        "contentType": "n"
     },
     "007": {
-        "label":"Transmission date & time",
+        "label":"Transmission date & time (AAMMJJhhmm)",
         "fixedLength": true,
-        "contentLength": 10,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 10,
+        "maxLength": 10,
+        "contentType": "n"
     },
     "008": {
+        "label":"Amount, cardholder billing fee",
         "fixedLength": true,
-        "contentLength": 8,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 8,
+        "maxLength": 8,
+        "contentType": "n"
     },
     "009": {
+        "label":"Conversion rate, settlement",
         "fixedLength": true,
-        "contentLength": 8,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 8,
+        "maxLength": 8,
+        "contentType": "n"
     },
     "010": {
+        "label":"Conversion rate, cardholder billing",
         "fixedLength": true,
-        "contentLength": 8,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 8,
+        "maxLength": 8,
+        "contentType": "n"
     },
     "011": {
         "label":"System trace audit number (STAN)",
         "fixedLength": true,
-        "contentLength": 6,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 6,
+        "maxLength": 6,
+        "contentType": "n"
     },
     "012": {
-        "label":"Local transaction time (hhmmss)",
+        "label":"Local transaction time (AAMMJJhhmmss)",
         "fixedLength": true,
-        "contentLength": 6,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 12,
+        "maxLength": 12,
+        "contentType": "n"
     },
     "013": {
+        "label":"Local transaction date (MMJJ)",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "n"
     },
     "014": {
+        "label":"Expiration date (AAMM)",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "n"
     },
     "015": {
+        "label":"Settlement date (AAMMJJ)",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 6,
+        "maxLength": 6,
+        "contentType": "n"
     },
     "016": {
+        "label":"Currency conversion date",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "n"
     },
     "017": {
+        "label":"Capture date",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "n"
     },
     "018": {
+        "label":"Merchant type, or merchant category code",
         "fixedLength": true,
-        "contentLength": 4,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "n"
     },
     "019": {
+        "label":"Acquiring institution (country code)",
         "fixedLength": true,
-        "contentLength": 3,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 3,
+        "maxLength": 3,
+        "contentType": "n"
     },
     "020": {
+        "label":"PAN extended (country code)",
         "fixedLength": true,
-        "contentLength": 3,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 3,
+        "maxLength": 3,
+        "contentType": "n"
     },
     "021": {
+        "label":"Forwarding institution (country code)",
         "fixedLength": true,
-        "contentLength": 3,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 3,
+        "maxLength": 3,
+        "contentType": "n"
     },
     "022": {
         "label":"Point of service entry mode",
         "fixedLength": true,
-        "contentLength": 3,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 12,
+        "maxLength": 12,
+        "contentType": "an"
     },
     "023": {
+        "label":"Application PAN sequence number",
         "fixedLength": true,
-        "contentLength": 3,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 3,
+        "maxLength": 3,
+        "contentType": "n"
     },
     "024": {
         "label":"Function code / Network international identifier (NII)",
         "fixedLength": true,
-        "contentLength": 3,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 3,
+        "maxLength": 3,
+        "contentType": "n"
     },
     "025": {
         "label":"Point of service condition code",
         "fixedLength": true,
-        "contentLength": 2,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 4,
+        "maxLength": 4,
+        "contentType": "n"
     },
     "026": {
+        "label":"Point of service capture code",
         "fixedLength": true,
-        "contentLength": 2,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 2,
+        "maxLength": 2,
+        "contentType": "n"
     },
     "027": {
+        "label":"Authorizing identification response length",
         "fixedLength": true,
-        "contentLength": 1,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 1,
+        "maxLength": 1,
+        "contentType": "n"
     },
     "028": {
         "fixedLength": true,
@@ -281,13 +214,11 @@
         "nestedElements": {}
     },
     "030": {
+        "label":"Amount, transaction processing fee",
         "fixedLength": true,
-        "contentLength": 9,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "x+n",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 24,
+        "maxLength": 24,
+        "contentType": "n"
     },
     "031": {
         "fixedLength": true,

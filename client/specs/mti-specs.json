@@ -1,0 +1,46 @@
+{
+    "ISO_8583_VERSION" : {
+        "0": "ISO 8583:1987",
+        "1": "ISO 8583:1993",
+        "2": "ISO 8583:2003",
+        "3": "Reserved by ISO",
+        "4": "Reserved by ISO",
+        "5": "Reserved by ISO",
+        "6": "Reserved by ISO",
+        "7": "Reserved by ISO",
+        "8": "National use",
+        "9": "Private use"
+    },
+    "ISO_8583_MSG_CLASS" : {
+        "0": "Reserved by ISO",
+        "1": "Authorization",
+        "2": "Financial",
+        "3": "File actions",
+        "4": "Reversal and chargeback",
+        "5": "Reconciliation",
+        "6": "Administrative",
+        "7": "Fee collection",
+        "8": "Network management",
+        "9": "Reserved by ISO"
+    },
+    "ISO_8583_MSG_FUNC" : {
+        "0": "Request",
+        "1": "Request response",
+        "2": "Advice",
+        "3": "Advice response",
+        "4": "Notification",
+        "5": "Notification acknowledgement",
+        "6": "Instruction",
+        "7": "Instruction acknowledgement",
+        "8": "Reserved by ISO",
+        "9": "Reserved by ISO"
+    },
+    "ISO_8583_MSG_ORG" : {
+        "0": "Acquirer",
+        "1": "Acquirer repeat",
+        "2": "Issuer",
+        "3": "Issuer repeat",
+        "4": "Other",
+        "6": "Reserved by ISO"
+    }
+}
