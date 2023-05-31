@@ -6,6 +6,7 @@ const INTERFACE = "6";
 const PROTOCOL_VERSION = "0100";
 const ISO_8583_VERSION = "1993";
 let FORMAT_INDICATOR = "000";
+let CONN_STATE = "Sign-OFF";
 
 module.exports = {
     MTI_LENGTH,
@@ -15,5 +16,6 @@ module.exports = {
     INTERFACE,
     PROTOCOL_VERSION,
     FORMAT_INDICATOR,
-    ISO_8583_VERSION
+    ISO_8583_VERSION,
+    CONN_STATE
 };

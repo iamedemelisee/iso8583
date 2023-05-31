@@ -1,18 +1,4 @@
 {
-    "000": {
-        "label":"MTI",
-        "fixedLength": true,
-        "minLength": 4,
-        "maxLength": 4,
-        "contentType": "a"
-    },
-    "001": {
-        "label":"Bitmap",
-        "fixedLength": false,
-        "minLength": 64,
-        "maxLength": 128,
-        "contentType": "b"
-    },
     "002": {
         "label":"Primary account number (PAN)",
         "fixedLength": false,
@@ -168,7 +154,7 @@
         "contentType": "n"
     },
     "024": {
-        "label":"Function code / Network international identifier (NII)",
+        "label":"Function code",
         "fixedLength": true,
         "minLength": 3,
         "maxLength": 3,
@@ -239,13 +225,11 @@
         "nestedElements": {}
     },
     "033": {
+        "label":"Forwarding institution identification code",
         "fixedLength": false,
-        "contentLength": 2,
         "minLength": 0,
         "maxLength": 11,
-        "contentType": "n",
-        "slug": null,
-        "nestedElements": {}
+        "contentType": "n"
     },
     "034": {
         "fixedLength": false,
@@ -276,13 +260,11 @@
         "nestedElements": {}
     },
     "037": {
+        "label":"Retrieval reference number",
         "fixedLength": true,
-        "contentLength": 12,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "an",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 12,
+        "maxLength": 12,
+        "contentType": "an"
     },
     "038": {
         "fixedLength": true,
@@ -1099,12 +1081,10 @@
         "nestedElements": {}
     },
     "128": {
+        "label":"Message authentication code",
         "fixedLength": true,
-        "contentLength": 64,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "b",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 8,
+        "maxLength": 8,
+        "contentType": "b"
     }
 }

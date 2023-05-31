@@ -24,7 +24,7 @@ if (!fs.existsSync('logs')) {
 const server = tls.createServer(options,(socket) => {
   message += initSRV_logs(socket, now);
   socket.on('data', (data) => {
-    let rnow = new Date().toLocaleString();
+     let rnow = new Date().toLocaleString();
     const isoMessageReq_CLI = data.toString();
     message += util.format('[%s] - INFO : Payload data recieved\n', rnow);
     message += util.format('[%s] - DATA : %s\n', rnow, isoMessageReq_CLI);
@@ -37,7 +37,7 @@ const server = tls.createServer(options,(socket) => {
     message += util.format('[%s] - ***************************************\n', rnow);
     message += util.format('[%s] - INFO : Sending reponse [...]\n', rnow);
     message += util.format('[%s] - DATA : Server sent response as payload\n', rnow);
-    const isoPayloadRes = packISO(isoMessageRes);
+    const isoPayloadRes = "0141ISO601000001814023000008A00000004242023123456230424120000110000000101000000000000080000000000";
     socket.write(isoPayloadRes);
     message += util.format('[%s] - %s\n', rnow, isoPayloadRes);
     message += util.format('[%s] - INFO : Packing response ISO message [...]\n', rnow);
