@@ -37,8 +37,8 @@ const server = tls.createServer(options,(socket) => {
     message += util.format('[%s] - ***************************************\n', rnow);
     message += util.format('[%s] - INFO : Sending reponse [...]\n', rnow);
     message += util.format('[%s] - DATA : Server sent response as payload\n', rnow);
-    const isoPayloadRes = "0141ISO601000001814023000008A00000004242023123456230424120000110000000101000000000000080000000000";
-    socket.write(isoPayloadRes);
+    const isoPayloadRes = "0141ISO601000001814023000008A00000000000000000000012306012019111111230601201905110000000101012121212121280000000000";
+    /* socket.write(isoPayloadRes);
     message += util.format('[%s] - %s\n', rnow, isoPayloadRes);
     message += util.format('[%s] - INFO : Packing response ISO message [...]\n', rnow);
     message += util.format('[%s] - INFO : Successfull\n', rnow);
@@ -48,7 +48,7 @@ const server = tls.createServer(options,(socket) => {
     message += logISO(isoPayloadResFields,isoDefaultSpecs);
     message += util.format('[%s] - ***************************************\n', rnow);
     message += util.format('[%s] - INFO : Awaiting client to send data [...]\n', rnow);
-    message += util.format('[%s] - ***************************************', rnow);
+    message += util.format('[%s] - ***************************************', rnow); */
     console.log(message);
     fs.appendFileSync(`logs/srv_log.txt`, message + '\n');
     message = ''

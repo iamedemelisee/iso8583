@@ -276,13 +276,11 @@
         "nestedElements": {}
     },
     "039": {
+        "label":"Response code",
         "fixedLength": true,
-        "contentLength": 2,
-        "minLength": 0,
-        "maxLength": 0,
-        "contentType": "an",
-        "slug": null,
-        "nestedElements": {}
+        "minLength": 3,
+        "maxLength": 3,
+        "contentType": "n"
     },
     "040": {
         "fixedLength": true,

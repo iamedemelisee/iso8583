@@ -167,10 +167,6 @@ function generateBitmap(jsonMessage) {
     }
     if (fieldsPresent) {
       bitmap[0] = '1';
-      bitmap.length = _PARAMS.BITMAP_MAX_LENGTH;
-    }
-    else {
-      bitmap.length = _PARAMS.BITMAP_MIN_LENGTH;
     }
   } 
   return bitmap.join('');
@@ -268,10 +264,54 @@ function getPayloadMTI(payload){
 }
 
 function getPayloadBitmapHEX(payload){
-  const bitmapHEX = payload.substring(19,35);
+  const bitmapHEX = payload.substring(19,51);
   return bitmapHEX;
 }
 
+function getPayloadDE(payload){
+  const payloadL = payload.length+1;
+  const DE = payload.substring(51,payloadL);
+  return DE;
+}
+
+function getPayloadDEFields(bitmapBIN) {
+  const DEFields = [];
+  for (let i = 0; i < bitmapBIN.length; i++) {
+    if (bitmapBIN[i] === '1') {
+      let fN = (i+1).toString().padStart(3,'0')
+      DEFields.push(fN);
+    }
+  }
+  return DEFields;
+}
+
+function payloadTojSON(payload, specs){
+  let jsonMessage = {};
+  let bitmapBIN = hexToBinary(getPayloadBitmapHEX(payload));
+  let payloadDE = getPayloadDE(payload);
+  let payloadDEFields = getPayloadDEFields(bitmapBIN);
+  for (const fN of payloadDEFields) {
+    if (specs.hasOwnProperty(fN)) {
+      let sp = 0;
+      if (specs[fN].fixedLength) {
+        let DEL = specs[fN].minLength;
+        jsonMessage[fN] = payloadDE.substring(sp, DEL);
+        let fp = payloadDE.length+1;
+        sp = DEL; 
+        payloadDE = payloadDE.substring(DEL,fp);
+      } else {
+        
+        let DEL = payloadDE.substring(sp, 2);
+        payloadDE = payloadDE.substring(2,payloadDE.length);
+        let fp = payloadDE.length+1;
+        jsonMessage[fN] = payloadDE.substring(sp, DEL);
+        sp = DEL; 
+        payloadDE = payloadDE.substring(DEL,fp);
+      }
+    }
+  }
+  return jsonMessage;
+}
 
 function unpackPayloadDataElements(payload){
   let data_elements = "";
@@ -466,6 +506,52 @@ function logISO(jsonMessage, specs, now){
 
 
 
+function logPayloadISO(jsonMessage, specs, now){
+  let ms = "";
+  const ikeys = Object.keys(jsonMessage).sort((a, b) => a - b);
+    ikeys.forEach((key) => {
+      const value = jsonMessage[key];
+      if (key == '055') {
+        ms += util.format('[%s] -\t[F%s] [ICC data – EMV having multiple tags] :\n', now, key);
+        emv.parse(value, function(data){
+          if(data != null){
+              data.forEach(element => {
+                ms += util.format('[%s] -\t\t%s : %s\n', now, padRight((element.tag).toString().padStart(4,' ')+' : ',15,'-'), (element.value).toString().toUpperCase());
+              });
+          }
+        });
+      }
+      else {
+        for (const [fkey, fvalue] of Object.entries(specs)) {
+          let flabel =''
+          
+          if (fkey == key) {
+            if (fvalue.label) {
+              flabel = '['+fvalue.label+']';
+            } else {
+              flabel = '[NO DESC]';
+            }
+            ms += util.format('[%s] - \t[F%s] %s : %s\n', now, key, padRight(flabel+' : ',70,'-'),value);
+          }
+        }
+      }
+    });
+  return ms;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function sendNetworkMessage(socket){
   let inow = setDate();
   let ms = '';
@@ -507,7 +593,6 @@ function checkResponseTimeout(socket, timeout, counter) {
         ms = '';
       } else {
         netState = setNetworkState("Sign-Off");
-        // Action à exécuter si le client n'a pas reçu de réponse dans le délai spécifié après plusieurs tentatives
         ms += util.format('\n[%s] - *************************************************************************************************\n', inow);
         ms += util.format('[%s] - WARN\t:\tConn. set to Sign-Off. No reponse from server to network message request\n', inow);
         ms += util.format('[%s] - *************************************************************************************************', inow);
@@ -516,7 +601,6 @@ function checkResponseTimeout(socket, timeout, counter) {
         const logFileName = 'logs/tls_cli_log_'+logDate+'.log';
         fs.appendFileSync(`${logFileName}`, ms + '\n');
         ms = '';
-        // Votre action spécifique ici
       }
     }
   }
@@ -529,9 +613,11 @@ function checkResponseTimeout(socket, timeout, counter) {
     let inow = setDate();
     let ms = '';
     const isoPayload = data.toString();
-
+    let conn_st = getNetworkState();
     const MTI = getPayloadMTI(isoPayload);
     const dMTI = decodeMTI(MTI, inow);
+    ms += util.format('[%s] - INFO\t:\tMTI \t\t:\t[%s]\n', inow, MTI);
+    ms += util.format('[%s] - INFO\t:\tConn. state\t:\t[%s]\n', inow, conn_st);
     if (dMTI.errr===1) {
       ms +=dMTI.msss;
       ms += util.format('[%s] - FATAL\t:\tCannot continue - Error decoding MTI\n', inow);
@@ -553,11 +639,19 @@ function checkResponseTimeout(socket, timeout, counter) {
           ms += util.format('[%s] - DATA\t:\tProtocol id.\t:\t[%s]\n', inow, m_protocol);
           ms += util.format('[%s] - DATA\t:\tMessage header\t:\t[%s]\n', inow, m_header);
           ms += util.format('[%s] - DATA\t:\tMessage MTI\t:\t[%s]\n', inow, MTI);
-          ms += util.format('[%s] - DATA\t:\tBitmap HEX\t:\t[%s]\n', inow, bitmap_hex);
+          ms += util.format('[%s] - DATA\t:\tBitmap HEX\t:\t[%s]\n', inow, bitmap_hex.replace(/(.{2})/g, '$1 ').trim());
           ms += util.format('[%s] - ***********************************************************************\n', inow);
           ms += util.format('[%s] - \tISO Message Fields Data elements :\n', inow);
-          /* ms += logISO(apiReq,isoDefaultSpecs, inow);
-          ms += util.format('[%s] - INFO\t:\tPackaging to ISO payload\t[...]\n', inow); */
+          let apiReq = payloadTojSON(isoPayload, ISO_SPECS);
+          ms += logPayloadISO(apiReq, ISO_SPECS, inow);
+          ms += util.format('[%s] - ***********************************************************************\n', inow);
+          ms += util.format('[%s] - INFO\t:\tPayload recieved\n', inow);
+          ms += util.format('[%s] - ***********************************************************************\n', inow);
+          const isoPayloadReq_hexdump = Buffer.from(isoPayload, 'ascii');
+          ms += util.format('%s', hexdump(isoPayloadReq_hexdump).replace(/^/gm, match => `[${inow}] - \t`));
+          ms += util.format('\n[%s] - ***********************************************************************\n', inow);
+          ms += util.format('[%s] - INFO\t:\tAwating data to send to server\n', inow);
+          ms += util.format('[%s] - ***********************************************************************\n', inow);
           console.log(ms);
           let logDate = setLogDate();
           const logFileName = 'logs/tls_cli_log_'+logDate+'.log';
