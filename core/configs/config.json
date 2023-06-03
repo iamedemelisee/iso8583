@@ -1,0 +1,1176 @@
+{
+    "setcli": 
+    {
+        "requestCert" : true,
+        "rejectUnauthorized" : false,
+        "certPath":"./cert/cli-cert.pem",
+        "keyPath":"./cert/cli-key.pem",
+        "switchCertPath":"./cert/switch-cert.pem",
+        "IP": "127.0.0.1",
+        "Port":3500
+    },
+    "setswitch": 
+    {
+        "requestCert" : true,
+        "rejectUnauthorized" : false,
+        "certPath":"./cert/switch-cert.pem",
+        "keyPath":"./cert/switch-key.pem",
+        "cliCertPath":"./cert/cli-cert.pem",
+        "IP": "127.0.0.1",
+        "Port":3500
+    },
+    "protocolname": "ISO",
+    "header":
+    {
+        "protocolversion": "0100",
+        "interface": "6",
+        "formatindicator": "000"
+    },
+    "mti":
+    {
+        "mtiLength":4,
+        "iso8583version" : {
+            "0": "ISO 8583:1987",
+            "1": "ISO 8583:1993",
+            "2": "ISO 8583:2003",
+            "3": "Reserved by ISO",
+            "4": "Reserved by ISO",
+            "5": "Reserved by ISO",
+            "6": "Reserved by ISO",
+            "7": "Reserved by ISO",
+            "8": "National use",
+            "9": "Private use"
+        },
+        "iso8583msgclass" : {
+            "0": "Reserved by ISO",
+            "1": "Authorization",
+            "2": "Financial",
+            "3": "File actions",
+            "4": "Reversal and chargeback",
+            "5": "Reconciliation",
+            "6": "Administrative",
+            "7": "Fee collection",
+            "8": "Network management",
+            "9": "Reserved by ISO"
+        },
+        "iso8583msgfunc" : {
+            "0": "Request",
+            "1": "Request response",
+            "2": "Advice",
+            "3": "Advice response",
+            "4": "Notification",
+            "5": "Notification acknowledgement",
+            "6": "Instruction",
+            "7": "Instruction acknowledgement",
+            "8": "Reserved by ISO",
+            "9": "Reserved by ISO"
+        },
+        "iso8583msgorigin" : {
+            "0": "Acquirer",
+            "1": "Acquirer repeat",
+            "2": "Issuer",
+            "3": "Issuer repeat",
+            "4": "Other",
+            "6": "Reserved by ISO"
+        }
+    },
+    "bitmap":
+    {
+        "minLength": 128,
+        "maxLength": 128
+    },
+    "datafields":
+    {
+        "002": {
+            "label":"Primary account number (PAN)",
+            "fixedLength": false,
+            "minLength": 16,
+            "maxLength": 19,
+            "contentType": "n"
+        },
+        "003": {
+            "label":"Processing Code",
+            "fixedLength": true,
+            "minLength": 6,
+            "maxLength": 6,
+            "contentType": "n"
+        },
+        "004": {
+            "label":"Amount Transaction",
+            "fixedLength": true,
+            "minLength": 12,
+            "maxLength": 12,
+            "contentType": "n"
+        },
+        "005": {
+            "label":"Amount, settlement",
+            "fixedLength": true,
+            "minLength": 12,
+            "maxLength": 12,
+            "contentType": "n"
+        },
+        "006": {
+            "label":"Amount, cardholder billing",
+            "fixedLength": true,
+            "minLength": 12,
+            "maxLength": 12,
+            "contentType": "n"
+        },
+        "007": {
+            "label":"Transmission date & time (AAMMJJhhmm)",
+            "fixedLength": true,
+            "minLength": 10,
+            "maxLength": 10,
+            "contentType": "n"
+        },
+        "008": {
+            "label":"Amount, cardholder billing fee",
+            "fixedLength": true,
+            "minLength": 8,
+            "maxLength": 8,
+            "contentType": "n"
+        },
+        "009": {
+            "label":"Conversion rate, settlement",
+            "fixedLength": true,
+            "minLength": 8,
+            "maxLength": 8,
+            "contentType": "n"
+        },
+        "010": {
+            "label":"Conversion rate, cardholder billing",
+            "fixedLength": true,
+            "minLength": 8,
+            "maxLength": 8,
+            "contentType": "n"
+        },
+        "011": {
+            "label":"System trace audit number (STAN)",
+            "fixedLength": true,
+            "minLength": 6,
+            "maxLength": 6,
+            "contentType": "n"
+        },
+        "012": {
+            "label":"Local transaction time (AAMMJJhhmmss)",
+            "fixedLength": true,
+            "minLength": 12,
+            "maxLength": 12,
+            "contentType": "n"
+        },
+        "013": {
+            "label":"Local transaction date (MMJJ)",
+            "fixedLength": true,
+            "minLength": 4,
+            "maxLength": 4,
+            "contentType": "n"
+        },
+        "014": {
+            "label":"Expiration date (AAMM)",
+            "fixedLength": true,
+            "minLength": 4,
+            "maxLength": 4,
+            "contentType": "n"
+        },
+        "015": {
+            "label":"Settlement date (AAMMJJ)",
+            "fixedLength": true,
+            "minLength": 6,
+            "maxLength": 6,
+            "contentType": "n"
+        },
+        "016": {
+            "label":"Currency conversion date",
+            "fixedLength": true,
+            "minLength": 4,
+            "maxLength": 4,
+            "contentType": "n"
+        },
+        "017": {
+            "label":"Capture date",
+            "fixedLength": true,
+            "minLength": 4,
+            "maxLength": 4,
+            "contentType": "n"
+        },
+        "018": {
+            "label":"Merchant type, or merchant category code",
+            "fixedLength": true,
+            "minLength": 4,
+            "maxLength": 4,
+            "contentType": "n"
+        },
+        "019": {
+            "label":"Acquiring institution (country code)",
+            "fixedLength": true,
+            "minLength": 3,
+            "maxLength": 3,
+            "contentType": "n"
+        },
+        "020": {
+            "label":"PAN extended (country code)",
+            "fixedLength": true,
+            "minLength": 3,
+            "maxLength": 3,
+            "contentType": "n"
+        },
+        "021": {
+            "label":"Forwarding institution (country code)",
+            "fixedLength": true,
+            "minLength": 3,
+            "maxLength": 3,
+            "contentType": "n"
+        },
+        "022": {
+            "label":"Point of service entry mode",
+            "fixedLength": true,
+            "minLength": 12,
+            "maxLength": 12,
+            "contentType": "an"
+        },
+        "023": {
+            "label":"Application PAN sequence number",
+            "fixedLength": true,
+            "minLength": 3,
+            "maxLength": 3,
+            "contentType": "n"
+        },
+        "024": {
+            "label":"Function code",
+            "fixedLength": true,
+            "minLength": 3,
+            "maxLength": 3,
+            "contentType": "n"
+        },
+        "025": {
+            "label":"Point of service condition code",
+            "fixedLength": true,
+            "minLength": 4,
+            "maxLength": 4,
+            "contentType": "n"
+        },
+        "026": {
+            "label":"Point of service capture code",
+            "fixedLength": true,
+            "minLength": 2,
+            "maxLength": 2,
+            "contentType": "n"
+        },
+        "027": {
+            "label":"Authorizing identification response length",
+            "fixedLength": true,
+            "minLength": 1,
+            "maxLength": 1,
+            "contentType": "n"
+        },
+        "028": {
+            "fixedLength": true,
+            "contentLength": 9,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "x+n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "029": {
+            "fixedLength": true,
+            "contentLength":9,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "x+n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "030": {
+            "label":"Amount, transaction processing fee",
+            "fixedLength": true,
+            "minLength": 24,
+            "maxLength": 24,
+            "contentType": "n"
+        },
+        "031": {
+            "fixedLength": true,
+            "contentLength": 9,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "x+n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "032": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 11,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "033": {
+            "label":"Forwarding institution identification code",
+            "fixedLength": false,
+            "minLength": 0,
+            "maxLength": 11,
+            "contentType": "n"
+        },
+        "034": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 28,
+            "contentType": "ns",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "035": {
+            "label":"Track 2 data",
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 37,
+            "contentType": "z",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "036": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 104,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "037": {
+            "label":"Retrieval reference number",
+            "fixedLength": true,
+            "minLength": 12,
+            "maxLength": 12,
+            "contentType": "an"
+        },
+        "038": {
+            "fixedLength": true,
+            "contentLength": 6,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "039": {
+            "label":"Response code",
+            "fixedLength": true,
+            "minLength": 3,
+            "maxLength": 3,
+            "contentType": "n"
+        },
+        "040": {
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "041": {
+            "label":"Card acceptor terminal identification",
+            "fixedLength": true,
+            "contentLength": 8,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "042": {
+            "label":"Card acceptor identification code",
+            "fixedLength": true,
+            "contentLength": 15,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "043": {
+            "fixedLength": true,
+            "contentLength": 40,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "044": {
+            "fixedLength": false,
+            "contentLength": 0,
+            "minLength": 0,
+            "maxLength": 25,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "045": {
+            "fixedLength": false,
+            "contentLength": 0,
+            "minLength": 0,
+            "maxLength": 76,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "046": {
+            "fixedLength": false,
+            "contentLength": 0,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "047": {
+            "fixedLength": false,
+            "contentLength": 0,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "048": {
+            "fixedLength": false,
+            "contentLength": 0,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "049": {
+            "label":"Currency code",
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "050": {
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "051": {
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "052": {
+            "fixedLength": true,
+            "contentLength": 8,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "b",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "053": {
+            "fixedLength": true,
+            "contentLength": 16,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "054": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 120,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "055": {
+            "label":"ICC data – EMV having multiple tags",
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "056": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "057": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "058": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "059": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "060": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "061": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "062": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "063": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "064": {
+            "fixedLength": true,
+            "contentLength": 16,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "b",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "065": {
+            "fixedLength": true,
+            "contentLength": 1,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "b",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "066": {
+            "fixedLength": true,
+            "contentLength": 1,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "067": {
+            "fixedLength": true,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "068": {
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "069": {
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "070": {
+            "fixedLength": true,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "071": {
+            "fixedLength": true,
+            "contentLength": 4,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "072": {
+            "fixedLength": true,
+            "contentLength": 4,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "073": {
+            "fixedLength": true,
+            "contentLength": 6,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "074": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "075": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "076": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "077": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "078": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "079": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "080": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "081": {
+            "fixedLength": true,
+            "contentLength": 10,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "082": {
+            "fixedLength": true,
+            "contentLength": 12,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "083": {
+            "fixedLength": true,
+            "contentLength": 12,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "084": {
+            "fixedLength": true,
+            "contentLength": 12,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "085": {
+            "fixedLength": true,
+            "contentLength": 12,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "086": {
+            "fixedLength": true,
+            "contentLength": 16,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "087": {
+            "fixedLength": true,
+            "contentLength": 16,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "088": {
+            "fixedLength": true,
+            "contentLength": 16,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "089": {
+            "fixedLength": true,
+            "contentLength": 16,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "090": {
+            "fixedLength": true,
+            "contentLength": 42,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "091": {
+            "fixedLength": true,
+            "contentLength": 1,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "092": {
+            "fixedLength": true,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "093": {
+            "fixedLength": true,
+            "contentLength": 5,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "094": {
+            "fixedLength": true,
+            "contentLength": 7,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "095": {
+            "fixedLength": true,
+            "contentLength": 42,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "an",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "096": {
+            "fixedLength": true,
+            "contentLength": 64,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "b",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "097": {
+            "fixedLength": true,
+            "contentLength": 17,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "x+n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "098": {
+            "fixedLength": true,
+            "contentLength": 25,
+            "minLength": 0,
+            "maxLength": 0,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "099": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 11,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "100": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 11,
+            "contentType": "n",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "101": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 17,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "102": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 28,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "103": {
+            "fixedLength": false,
+            "contentLength": 2,
+            "minLength": 0,
+            "maxLength": 28,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "104": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 100,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "105": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "106": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "107": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "108": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "109": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "110": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "111": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "112": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "113": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "114": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "115": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "116": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "117": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "118": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "119": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "120": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "121": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "122": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "123": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "124": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "125": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "126": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "127": {
+            "fixedLength": false,
+            "contentLength": 3,
+            "minLength": 0,
+            "maxLength": 999,
+            "contentType": "ans",
+            "slug": null,
+            "nestedElements": {}
+        },
+        "128": {
+            "label":"Message authentication code",
+            "fixedLength": true,
+            "minLength": 8,
+            "maxLength": 8,
+            "contentType": "b"
+        }
+    },
+    "networkmanagement":
+    {
+        "timeoutNetMReqSec" : 2,
+        "retryNetMReqCount" : 5
+    }
+}

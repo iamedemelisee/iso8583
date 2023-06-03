@@ -1,0 +1,22 @@
+{
+  "name": "iso8583_cli",
+  "version": "1.0.0",
+  "description": "iso8583 cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "sys cli start"
+  },
+  "keywords": [
+    "iso8583",
+    "e-payment",
+    "issuing",
+    "switch"
+  ],
+  "author": "iamedemelisee",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "fs": "^0.0.1-security",
+    "tls": "^0.0.1"
+  }
+}

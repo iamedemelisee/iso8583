@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "hexdump-nodejs": "^0.1.0",
+    "node-emv": "^1.0.22",
+    "tls": "^0.0.1",
+    "util": "^0.12.5"
+  }
+}

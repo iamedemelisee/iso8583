@@ -1,0 +1,7 @@
+{
+    "CERT_PATH": "./cert/switch-cert.pem",
+    "KEY_PATH": "./cert/switch-key.pem",
+    "CLI_CERT_PATH": "./cert/cli-cert.pem",
+    "SWITCH_HOST":"127.0.0.1",
+    "SWITCH_PORT":3500
+}
